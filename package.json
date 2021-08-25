@@ -1,0 +1,50 @@
+{
+  "name": "mediumc",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon app.js",
+    "build": "cross-env NODE_ENV=build node app.js"
+  },
+  "keywords": [],
+  "author": "Devvyou",
+  "license": "MIT",
+  "engines": {
+    "node": "15.x"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.4.1",
+    "cross-env": "^7.0.3",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-rate-limit": "^5.3.0",
+    "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
+    "hpp": "^0.2.3",
+    "mongoose": "^5.13.5",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "nocache": "^3.0.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "rimraf": "^3.0.2",
+    "tinify": "^1.6.0-beta.2",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.12"
+  },
+  "description": "Project made with: Node Js and Express js. It's a CRUD App where the Admin, through its panel, can create, edit and delete a Product( a Carpet ). The route of the Admin Panel naturally is protected. The authentication part(login) was made by Passport.js framework( Local - Strategy ).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antonio5672/MediumC-Webapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Antonio5672/MediumC-Webapp/issues"
+  },
+  "homepage": "https://github.com/Antonio5672/#readme"
+}

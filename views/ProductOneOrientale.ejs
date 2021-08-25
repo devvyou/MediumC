@@ -1,0 +1,115 @@
+<body id="catalogo" class="catalogo_orientale">
+
+    <% if(broadcastMsg !=='' ){ %>
+        <main class="broadcast">
+            <h2>
+                <%= broadcastMsg %>
+            </h2>
+            <img src="/Icons/closeBroadcast.svg">
+        </main>
+        <% } %>
+
+            <section class="header" id="header">
+
+                <div class="upper">
+                    <div class="title-section">
+                        <h1 data-aos="fade-left" data-aos-duration="1000">Tappeti Orientali</h1>
+                        <div class="absolute black">
+                            <img src="/Icons/arrowToLeft.svg">
+                            <p>Torna Indietro</p>
+                        </div>
+                    </div>
+                    <div class="types-section">
+                        <div class="indiani">
+                            <p>Indiani</p>
+                        </div>
+                        <div class="inliner">
+                            <div>
+                                <p>Persiani</p>
+                            </div>
+                            <div>
+                                <p>Pakistani</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lower"></div>
+
+            </section>
+
+            <section class="catalogo" id="catalogo_real">
+
+                <div class="navbar">
+                    <h2>Catalogo</h2>
+                    <form method="POST" action="/searchProduct">
+
+                        <input type="hidden" name="type" value="Occidentale">
+
+                        <div class="select">
+                            <select name="option" id="option">
+                                <option id="prezzoCrescente" value="prezzoCrescente">Prezzo Crescente</option>
+                                <option id="prezzoDecrescente" value="prezzoDecrescente">Prezzo Decrescente</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <div class="abs">
+                                <img src="/Icons/search.svg">
+                                <input type=" text" name="product" id="product" placeholder="Cerca prodotto..">
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit">Entra</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="products" id="products">
+
+                    <div class="arrow-go-up orange">
+                        <img src="/Icons/arrowToLeftWhite.svg">
+                    </div>
+
+                    <h3>Tappeti</h3>
+
+
+                    <main>
+
+                        <div data-aos="fade-up" data-aos-duration="1000" class="row">
+
+
+                            <a class="a" href="/catalogo/orientale/<%=product._id %>">
+                                <div class="cover">
+                                    <img src="/Images/cards_images/product1.svg">
+
+                                    <div class="overlay">
+                                        <button class="button">Scopri di più</button>
+                                    </div>
+                                </div>
+                                <div class="inliner">
+                                    <p>
+                                        <%= product.name %>: <span>
+                                                <%= product.price %> £
+                                            </span>
+                                    </p>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </main>
+
+
+                </div>
+
+            </section>
+
+            <script src="/clientSideScripts/catalogo.js"></script>
+            <% if (broadcastMsg !=='' ) { %>
+                <script src="/clientSideScripts/broadcast.js"></script>
+                <% } %>
+</body>

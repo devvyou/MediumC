@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+
+    <!-- Meta Tags -->
+    <meta name="description"
+        content="MediumC vende Tappeti di qualsiasi nazionalità, da quelli Europei a quelli Orientali.
+    I Tappeti se scelti accuratamente aggiungeranno colore e carattere all'ambiente. Visita il nostro sito web per maggiori informazioni.">
+    <meta name="keywords" content="Tappetaio, Tappeti Orientali, Tappeti Indiani, Tappeti in Italia">
+    <meta name="author" content="Antonio Salzano">
+    <meta name="copyright" content="Antonio Salzano">
+
+    <!-- SCSS -->
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Roboto font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Tillana font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tillana:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Montserrat font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<%- body %>
+
+    <section class="footer">
+        <h3>Tappetaio</h3>
+
+        <ul class="links">
+            <li>
+                <h4>Navigazione</h4>
+                <a href="/catalogo/orientale">Catalogo Orientali</a>
+                <a href="/catalogo/occidentale">Catalogo Occidentali</a>
+                <a href="/catalogo">Catalogo</a>
+                <a href="/">Home</a>
+                <% if (locals.authenticated) { %>
+                    <a href="/admin/dashboard">Dashboard</a>
+                    <% } %>
+            </li>
+            <li>
+                <h4>Contatti</h4>
+                <a href="">Instagram</a>
+                <a href="">Facebook</a>
+                <a href="">Whatsapp</a>
+            </li>
+            <li>
+                <h4>Privacy</h4>
+                <a href="">Terms & Use</a>
+                <a href="">Privacy & Conditions</a>
+                <a href="">Cookies</a>
+            </li>
+
+        </ul>
+
+    </section>
+
+</html>

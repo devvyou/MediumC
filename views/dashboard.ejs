@@ -1,0 +1,115 @@
+<body id="dashboard">
+
+    <section class="orange">
+        <div class="abs">
+            <div class="links">
+                <a href="/">
+                    <img src="/Icons/back.svg">
+                    Torna Indietro
+                </a>
+                <a href="/logout">
+                    <img src="/Icons/logout.svg">
+                    Logout
+                </a>
+            </div>
+        </div>
+        <ul class="list-products">
+            <% products.forEach(product=> { %>
+                <li data-id="<%= product._id %>">
+                    <div>
+                        <% if (product.type==='Occidentale' ) { %>
+                            <img src="/Icons/ovest.svg">
+                            <% } else { %>
+                                <img src="/Icons/est.svg">
+                                <% } %>
+                                    <p>
+                                        <%= product.name %>
+                                    </p>
+                    </div>
+                    <div class="tools">
+                        <img class="edit" src="/Icons/edit.svg">
+                        <img class="delete" src="/Icons/delete.svg">
+                    </div>
+                </li>
+                <% }) %>
+        </ul>
+    </section>
+    <section class="blu">
+        <h2>Aggiungi Prodotto</h2>
+        <form method="post" id="form" enctype="multipart/form-data" action="/addProduct">
+
+            <div class="form-groups">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" value="Kahir" name="name" id="name" placeholder="Nome del Prodotto">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Prezzo</label>
+                        <input type="number" value="589" name="price" id="price">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="shape">Forma</label>
+                        <select name="shape" id="shape">
+                            <option value="quadrata">Quadrata</option>
+                            <option value="rotonda">Rotonda</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descrizione</label>
+                        <textarea name="description" id="description"
+                            placeholder="Descrizione riguardo il Prodotto">Questa è una descrizione riguardo al tappeto Kahir, nuovo e con stile moderno</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-groups">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="place">Provenienza</label>
+                        <input value="India" type="text" name="place" id="place" placeholder="Inserisci Luogo">
+                    </div>
+                    <div class="form-group">
+                        <label for="material">Materiale</label>
+                        <input value="Cotone" type="text" name="material" placeholder="Inserisci il materiale"
+                            id="material">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group" id="tipo">
+                        <label for="type">Tipo</label>
+                        <select name="type" id="type">
+                            <option value="Orientale">Orientale</option>
+                            <option value="Occidentale">Occidentale</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar">Immagine</label>
+                        <input type="file" name="avatar" id="avatar">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <button form="form" class="button">Crea Prodotto</button>
+
+    </section>
+    <section class="broadcast">
+        <h2>Broadcast</h2>
+        <p>Inserisci un annuncio nella Homepage</p>
+
+        <form method="POST" action="/addBroadcast">
+            <input placeholder="Contenuto dell'annuncio" type="text" name="broadcast" id="broadcast">
+            <button type="submit">Pubblica</button>
+        </form>
+        <p class="actual"><span>Annuncio attuale: </span>Sconto del 25% su tutti i Prodotti</p>
+
+        <a class="deleteBroadcast" href="/deleteBroadcast">Elimina l'attuale Broadcast</a>
+    </section>
+
+    <script src="/clientSideScripts/tools.js"></script>
+
+</body>
