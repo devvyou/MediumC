@@ -45,3 +45,7 @@ If you want to see the UI Design of this Project, go into "Design" folder 📁�
         - 2 create an .env file fill all the variables
         - 3 npm run dev
         - go in the URL of your browser and type: localhost:3000
+
+Do you need a Website to increase your
+
+enters, or maybe increase the speed of your website, get in touch with me 🚀
