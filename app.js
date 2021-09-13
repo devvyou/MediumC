@@ -22,28 +22,28 @@ const express = require('express'),
 
 
 // Middlewares
-app.use(helmet({
-    hidePoweredBy: true,
-    dnsPrefetchControl: { allow: true },
-    referrerPolicy: { policy: "no-referrer", },
-    noSniff: true,
-    contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-            "script-src": ["'self'", "https://unpkg.com/aos@next/dist/aos.js"],
-            "form-action": ["'self'"]
-        }
-    }
-}))
+// app.use(helmet({
+//     hidePoweredBy: true,
+//     dnsPrefetchControl: { allow: true },
+//     referrerPolicy: { policy: "no-referrer", },
+//     noSniff: true,
+//     contentSecurityPolicy: {
+//         useDefaults: true,
+//         directives: {
+//             "script-src": ["'self'", "https://unpkg.com/aos@next/dist/aos.js"],
+//             "form-action": ["'self'"]
+//         }
+//     }
+// }))
 
-app.use((req, res, next) => {
-    res.set('frame-ancestors', 'none');
-    res.set('object-src', 'none');
-    res.set('base-uri', 'none');
-    res.set('Referrer-Policy', 'no-referrer');
-    res.set('X-XSS-Protection', '1; mode=block');
-    return next();
-})
+// app.use((req, res, next) => {
+//     res.set('frame-ancestors', 'none');
+//     res.set('object-src', 'none');
+//     res.set('base-uri', 'none');
+//     res.set('Referrer-Policy', 'no-referrer');
+//     res.set('X-XSS-Protection', '1; mode=block');
+//     return next();
+// })
 
 app.use(hpp());
 app.use(nocache());
