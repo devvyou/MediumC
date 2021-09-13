@@ -4,8 +4,8 @@
   "description": "<h2>Node js and Express js</h2>",
   "main": "app.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon app.js",
-    "start": "cross-env NODE_ENV=production node app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

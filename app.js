@@ -84,22 +84,10 @@ app.use((req, res, next) => {
 
 
 // Init the GET Route
-app.use('/', require('./routes/getRoutes'))
+app.use('/', require('./routes/getRoutes'));
 
 // Init the POST Route
-app.use('/', require('./routes/postRoutes'))
+app.use('/', require('./routes/postRoutes'));
 
-
-if (process.env.NODE_ENV === 'development') {
-
-    app.use(morgan('dev'));
-    app.listen(process.env.PORT, () => {
-        console.log('Tappetaio - Development: Listening on the port: ', process.env.PORT);
-    })
-
-} else {
-    app.listen(process.env.PORT, () => {
-        console.log('Tappetaio - Build: Listening on the port: ', process.env.PORT);
-    })
-}
+app.listen(process.env.PORT || 80)
 
