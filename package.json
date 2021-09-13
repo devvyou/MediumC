@@ -11,9 +11,19 @@
     "type": "git",
     "url": "git+https://github.com/devvyou/MediumC.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "node js",
+    "devvyou",
+    "express",
+    "expressjs",
+    "heroku",
+    "webapp",
+    "website",
+    "ejs",
+    "scss"
+  ],
+  "author": "devvyou",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/devvyou/MediumC/issues"
   },
