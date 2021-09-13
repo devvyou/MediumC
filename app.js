@@ -83,13 +83,17 @@ app.use((req, res, next) => {
     return next();
 });
 
-const admin = await Admin.find({ email: process.env.ADMIN_EMAIL })
+Admin.find({ email: process.env.ADMIN_EMAIL })
+    .then(admin => {
 
-app.get('/', (req, res) => res.render('home', {
-    layout: 'layouts/footerAos',
-    title: 'MediumC - pagee',
-    msg: admin[0].broadcast
-}))
+        app.get('/', (req, res) => res.render('home', {
+            layout: 'layouts/footerAos',
+            title: 'MediumC - pagee',
+            msg: admin[0].broadcast
+        }))
+
+        app.listen(process.env.PORT || 80)
+    })
 
 // Init the GET Route
 // app.use('/', require('./routes/getRoutes'));
@@ -97,5 +101,4 @@ app.get('/', (req, res) => res.render('home', {
 // Init the POST Route
 // app.use('/', require('./routes/postRoutes'));
 
-app.listen(process.env.PORT || 80)
 
