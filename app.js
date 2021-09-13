@@ -13,7 +13,8 @@ const express = require('express'),
     MongoStore = require('connect-mongo'),
     hpp = require('hpp'),
     connDb = require('./database/connectDb'),
-    passport = require('passport');
+    passport = require('passport'),
+    Admin = require('./database/models/Admin');
 
 // Connecting mongoose to the app
 (async () => {
@@ -80,14 +81,22 @@ app.use((req, res, next) => {
     res.locals.authenticated = req.isAuthenticated();
     res.locals.user = req.user;
     return next();
-})
+});
 
+(async () => {
+    const admin = await Admin.find({ email: process.env.ADMIN_EMAIL })
 
+    app.get('/', (req, res) => res.render('home', {
+        layout: 'layouts/footerAos',
+        title: 'MediumC - pagee',
+        msg: admin[0].broadcast
+    }))
+})()
 // Init the GET Route
-app.use('/', require('./routes/getRoutes'));
+// app.use('/', require('./routes/getRoutes'));
 
 // Init the POST Route
-app.use('/', require('./routes/postRoutes'));
+// app.use('/', require('./routes/postRoutes'));
 
 app.listen(process.env.PORT || 80)
 
