@@ -56,24 +56,24 @@ app.use(express.urlencoded({ extended: false }));
 
 
 // Requiring passport.js file
-require('./passport');
+// require('./passport');
 
 
 // Init express-session
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({
-        mongoUrl: process.env.MONGO_URI,
-        dbName: process.env.DB_NAME
-    })
-}))
+// app.use(session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     store: MongoStore.create({
+//         mongoUrl: process.env.MONGO_URI,
+//         dbName: process.env.DB_NAME
+//     })
+// }))
 
 
 // Setting passport js
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 // Local Variables
