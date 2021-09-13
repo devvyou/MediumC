@@ -1,6 +1,7 @@
 // Loading environment variables
 require('dotenv').config();
 
+
 // Requiring all the dependencies
 const express = require('express'),
     app = express(),
@@ -10,28 +11,47 @@ const express = require('express'),
     expressLayouts = require('express-ejs-layouts'),
     session = require('express-session'),
     MongoStore = require('connect-mongo'),
-    xss = require('xss-clean'),
     hpp = require('hpp'),
     connDb = require('./database/connectDb'),
     passport = require('passport');
 
+// Connecting mongoose to the app
+(async () => {
+    await connDb();
+})();
+
 
 // Middlewares
-app.use(helmet.hidePoweredBy());
+app.use(helmet({
+    hidePoweredBy: true,
+    dnsPrefetchControl: { allow: true },
+    referrerPolicy: { policy: "no-referrer", },
+    noSniff: true,
+    contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+            "script-src": ["'self'", "https://unpkg.com/aos@next/dist/aos.js"],
+            "form-action": ["'self'"]
+        }
+    }
+}))
+
+app.use((req, res, next) => {
+    res.set('frame-ancestors', 'none');
+    res.set('object-src', 'none');
+    res.set('base-uri', 'none');
+    res.set('Referrer-Policy', 'no-referrer');
+    res.set('X-XSS-Protection', '1; mode=block');
+    return next();
+})
+
 app.use(hpp());
-app.use(xss());
 app.use(nocache());
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-
-// Connecting mongoose to the app
-(async () => {
-    await connDb();
-})();
 
 
 // Requiring passport.js file
@@ -82,28 +102,4 @@ if (process.env.NODE_ENV === 'development') {
         console.log('Tappetaio - Build: Listening on the port: ', process.env.PORT);
     })
 }
-
-
-// Error Handling
-// app.use((err, req, res, next) => {
-
-    // console.log(err.statusCode);
-    // res.status(err.status || 500);
-
-    // if (err.status == undefined) {
-    //     return res.render('404', {
-    //         status: 500,
-    //         message: 'Internal Server Error',
-    //         layout: 'layouts/withoutFooter'
-    //     })
-    // } else {
-    //     return res.render('404', {
-    //         status: err.status,
-    //         message: err.message,
-    //         layout: 'layouts/withoutFooter'
-    //     })
-    // }
-
-// })
-
 

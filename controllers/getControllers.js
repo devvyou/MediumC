@@ -6,11 +6,10 @@ const Product = require("../database/models/Product"),
 const renderHome = async (req, res) => {
 
     try {
-        const admin = await Admin.findOne({ email: process.env.ADMIN_EMAIL });
-
+        const admin = await Admin.find({ email: process.env.ADMIN_EMAIL })
         return res.render('home', {
             layout: 'layouts/footerAos',
-            broadcastMsg: admin.broadcast,
+            msg: admin[0].broadcast,
             title: 'MediumC | Landing Page'
         })
     } catch (err) {
@@ -23,7 +22,7 @@ const renderHome = async (req, res) => {
 const renderDashboard = async (req, res) => {
 
     try {
-        await Product.find({}, (err, data) => {
+        Product.find({}, (err, data) => {
 
             if (err) throw new Error(err);
 

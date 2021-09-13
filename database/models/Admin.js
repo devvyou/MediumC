@@ -48,10 +48,7 @@ async function newAdmin() {
         password: hashedPassword,
         sortBy: 'decrescente'
     })
-    await admin.save(admin => {
-        console.log('CREATED NEW ADMIN: ');
-        console.log(admin);
-    })
+    await admin.save()
 }
 
 

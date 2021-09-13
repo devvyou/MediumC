@@ -57,7 +57,7 @@ const addProductController = async (req, res) => {
 
 
 
-        // Redirect to the Dashboard, like a reload page
+        // Redirect to the Dashboard, as a reload page
         return res.redirect("/admin/dashboard");
 
     } catch (error) {

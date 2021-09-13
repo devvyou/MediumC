@@ -1,8 +1,8 @@
 <body data-scroll-container id="landing_page">
-    <% if(broadcastMsg !=='' ){ %>
+    <% if(msg !=='' ){ %>
         <main class="broadcast">
             <h2>
-                <%= broadcastMsg %>
+                <%= msg %>
             </h2>
             <img src="/Icons/closeBroadcast.svg">
         </main>
@@ -88,7 +88,8 @@
                         </p>
                         <div class="inliner2">
                             <a href="/catalogo/occidentale" class="button">Prodotti</a>
-                            <a href="#occidentale_info" data-aos="fade-bottom" data-aos-delay="1500">Scopri di più</a>
+                            <a href="#occidentale_info" data-aos="fade-bottom" data-aos-delay="1500">Scopri di
+                                più</a>
                         </div>
                     </div>
                     <img alt="MediumC Tappeti Occidentali" data-aos="fade-left" data-aos-delay="500"
@@ -187,5 +188,4 @@
             <script src="/clientSideScripts/broadcast.js"></script>
             <script src="/clientSideScripts/navbarMenu.js"></script>
             <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-            <script> AOS.init();</script>
 </body>
