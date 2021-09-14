@@ -4,8 +4,7 @@
   "description": "<h2>Node js and Express js</h2>",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "build": "npm run compile && npm run execute"
   },
   "repository": {
     "type": "git",
@@ -30,6 +29,7 @@
   "homepage": "https://github.com/devvyou/MediumC#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "compression": "^1.7.4",
     "connect-mongo": "^4.5.0",
     "cross-env": "^7.0.3",
     "csurf": "^1.11.0",

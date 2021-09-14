@@ -1,4 +1,5 @@
 <body data-scroll-container id="landing_page">
+
     <% if(msg !=='' ){ %>
         <main class="broadcast">
             <h2>
@@ -6,96 +7,113 @@
             </h2>
             <img src="/Icons/closeBroadcast.svg">
         </main>
+
         <% } %>
             <section class="header">
-                <div class="overlay"></div>
                 <nav>
-                    <img class="hamburger" src="/Icons/hamburgerBLACK.svg">
-                    <ul>
-                        <li><a href="/catalogo">Catalogo</a></li>
-                        <li><a href="/">Contattami</a></li>
-                        <li><a href="#payments">Pagamenti</a></li>
-                        <% if (locals.authenticated) { %>
-                            <li><a href="/admin/dashboard">Dashboard</a></li>
-                            <% } %>
-                    </ul>
-                    <img class="closeMenu" src="/Icons/closeMenu.svg">
+                    <div class="container">
+                        <a class="logo" href="/">
+                            <img src="/Icons/mediumc__logo.svg">
+                        </a>
+
+                        <ul>
+                            <div class="centering">
+                                <li><a href="/catalogo">Catalogo</a></li>
+                                <li><a href="mailto:devvyou@gmail.com">Contattami</a></li>
+                                <li><a href="#payments">Pagamenti</a></li>
+                            </div>
+                        </ul>
+
+                        <img class="hamburger" src="/Icons/hamburger.svg">
+                        <img class="closeMenu" src="/Icons/closeMenu.svg">
+
+                    </div>
                 </nav>
-                <div>
-                    <h1 data-aos="fade-up">MediumC</h1>
-                    <p data-aos="fade-up" data-aos-delay="500">
-                        Per vedere i nostri Prodotti<br>
-                        scorri direttamente al Catalogo e decidere<br>
-                        il tipo di Prodotto adatto per te.
-                    </p>
-                    <a data-aos="fade-up" data-aos-delay="1000" class="button" href="/catalogo">Visita</a>
+
+                <div class="banner">
+                    <div class="overlay"></div>
+                    <div class="center">
+                        <div class="container">
+                            <h1>MediumC</h1>
+                            <p>
+                                Scopri i nostri nuovi prodotti nel catalogo,
+                                dove potrai trovare sicuramente qualsiasi tipo di prodotto.
+                            </p>
+                            <a href="#tps">Scopri di più</a>
+                        </div>
+                    </div>
                 </div>
+
             </section>
 
             <section class="info" id="info">
-                <ul>
-                    <li>
-                        <h2 data-aos="fade-up" data-aos-delay="400">Cosa vendiamo ?</h2>
-                        <p>
-                            Il nostro Catalogo comprende due tipi di tappeti.<br>
-                            Orientali e Occidentali
-                        </p>
-                    </li>
-                    <li>
-                        <h2 data-aos="fade-up" data-aos-delay="500">Compra subito</h2>
-                        <div class="inliner">
+                <div class="container">
+                    <ul>
+                        <li>
+                            <h2 data-aos="fade-up" data-aos-delay="400">Cosa vendiamo ?</h2>
                             <p>
-                                Per scorrere direttamente al catalogo.<br>
-                                <a href="/catalogo">Clicca qui</a>
+                                Il nostro Catalogo comprende due tipi di tappeti.<br>
+                                Orientali e Occidentali
                             </p>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                        <li>
+                            <h2 data-aos="fade-up" data-aos-delay="500">Compra subito</h2>
+                            <div class="inliner">
+                                <p>
+                                    Per scorrere direttamente al catalogo.<br>
+                                    <a href="/catalogo">Clicca qui</a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </section>
 
-            <div class="tappeti orientali">
-                <div class="background"></div>
-                <div class="inliner">
-                    <img alt="MediumC Tappeti Orientali" data-aos="fade-right" data-aos-delay="500"
-                        src="/Images/imagesHome/tappeti_orientali.jpg">
-                    <div class="content">
-                        <h2 data-aos="fade-left">Tappeti Orientali</h2>
-                        <p data-aos="fade-left" data-aos-delay="1000">
-                            I tappeti orientali sono considerati delle<br>
-                            vere e proprie opere d’arti. Essi<br>
-                            rispecchiano la cultura di un popolo, e<br>
-                            presentano una forma espressiva<br>
-                            caratterizzata da una storia millenaria.
-                        </p>
-                        <div class="inliner2">
-                            <a href="/catalogo/orientale" class="button">Prodotti</a>
-                            <a data-aos="fade-bottom" data-aos-delay="1500" href="#orientale_info">Scopri di più</a>
+            <seciton id="tps">
+                <div class="tappeti orientali">
+                    <div class="background"></div>
+                    <div class="inliner">
+                        <img alt="MediumC Tappeti Orientali" data-aos="fade-right" data-aos-delay="500"
+                            src="/Images/imagesHome/tappeti_orientali.jpg">
+                        <div class="content">
+                            <h2 data-aos="fade-left">Tappeti Orientali</h2>
+                            <p data-aos="fade-left" data-aos-delay="1000">
+                                I tappeti orientali sono considerati delle<br>
+                                vere e proprie opere d’arti. Essi<br>
+                                rispecchiano la cultura di un popolo, e<br>
+                                presentano una forma espressiva<br>
+                                caratterizzata da una storia millenaria.
+                            </p>
+                            <div class="inliner2">
+                                <a href="/catalogo/orientale" class="button">Prodotti</a>
+                                <a data-aos="fade-bottom" data-aos-delay="1500" href="#orientale_info">Scopri di più</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="tappeti occidentali">
-                <div class="background"></div>
-                <div class="inliner">
-                    <div class="content">
-                        <h2 data-aos="fade-right">Tappeti Occidentali</h2>
-                        <p data-aos="fade-right" data-aos-delay="1000">
-                            I tappeti moderni aggiungono colore<br>
-                            all’arredamento in modo uniforme. Questi<br>
-                            tipi di tappeti, nella maggior parte dei casi,<br>
-                            sono mono o bicolore.
-                        </p>
-                        <div class="inliner2">
-                            <a href="/catalogo/occidentale" class="button">Prodotti</a>
-                            <a href="#occidentale_info" data-aos="fade-bottom" data-aos-delay="1500">Scopri di
-                                più</a>
+                <div class="tappeti occidentali">
+                    <div class="background"></div>
+                    <div class="inliner">
+                        <div class="content">
+                            <h2 data-aos="fade-right">Tappeti Occidentali</h2>
+                            <p data-aos="fade-right" data-aos-delay="1000">
+                                I tappeti moderni aggiungono colore<br>
+                                all’arredamento in modo uniforme. Questi<br>
+                                tipi di tappeti, nella maggior parte dei casi,<br>
+                                sono mono o bicolore.
+                            </p>
+                            <div class="inliner2">
+                                <a href="/catalogo/occidentale" class="button">Prodotti</a>
+                                <a href="#occidentale_info" data-aos="fade-bottom" data-aos-delay="1500">Scopri di
+                                    più</a>
+                            </div>
                         </div>
+                        <img alt="MediumC Tappeti Occidentali" data-aos="fade-left" data-aos-delay="500"
+                            src="/Images/imagesHome/tappeti_moderni.jpg">
                     </div>
-                    <img alt="MediumC Tappeti Occidentali" data-aos="fade-left" data-aos-delay="500"
-                        src="/Images/imagesHome/tappeti_moderni.jpg">
                 </div>
-            </div>
+            </seciton>
 
 
 
