@@ -7,14 +7,12 @@ const express = require('express'),
     app = express(),
     nocache = require('nocache'),
     helmet = require('helmet'),
-    morgan = require('morgan'),
     expressLayouts = require('express-ejs-layouts'),
     session = require('express-session'),
     MongoStore = require('connect-mongo'),
     hpp = require('hpp'),
     connDb = require('./database/connectDb'),
     passport = require('passport'),
-    Admin = require('./database/models/Admin'),
     compression = require('compression');
 
 // Connecting mongoose to the app
@@ -22,6 +20,18 @@ const express = require('express'),
     await connDb();
 })();
 
+app.use((req, res, next) => {
+    res.set('object-src', 'none');
+    res.set('base-uri', 'none');
+    res.set('Referrer-Policy', 'no-referrer');
+    res.set('X-XSS-Protection', '1; mode=block');
+    return next();
+})
+
+app.use((req, res, next) => {
+    res.locals.cspNonce = require('crypto').randomBytes(16).toString('base64');
+    return next();
+})
 
 // Middlewares
 app.use(helmet({
@@ -32,20 +42,29 @@ app.use(helmet({
     contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-            "script-src": ["'self'", "https://unpkg.com/aos@next/dist/aos.js"],
-            "form-action": ["'self'"]
+            "script-src":
+                [
+                    "'self'",
+                    "https://unpkg.com/aos@next/dist/aos.js",
+                    "https://cdn.iubenda.com/iubenda.js",
+                    "https://cdn.iubenda.com",
+                    (req, res) => `'nonce-${res.locals.cspNonce}'`
+                ],
+            "form-action": ["'self'"],
+            "img-src":
+                ["'self'",
+                    "data:",
+                    "https://cdn.iubenda.com/close.png",
+                ],
+            "frame-src":
+                [
+                    "'self'",
+                    "https://www.iubenda.com"
+                ],
+            "worker-src": ["'none'"]
         }
     }
 }))
-
-app.use((req, res, next) => {
-    res.set('frame-ancestors', 'none');
-    res.set('object-src', 'none');
-    res.set('base-uri', 'none');
-    res.set('Referrer-Policy', 'no-referrer');
-    res.set('X-XSS-Protection', '1; mode=block');
-    return next();
-})
 
 app.use(hpp());
 app.use(nocache());
@@ -93,5 +112,5 @@ app.use('/', require('./routes/getRoutes'));
 app.use('/', require('./routes/postRoutes'));
 
 
-app.listen(process.env.PORT || 80)
+app.listen(3000)
 
