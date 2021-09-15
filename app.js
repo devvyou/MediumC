@@ -112,5 +112,5 @@ app.use('/', require('./routes/getRoutes'));
 app.use('/', require('./routes/postRoutes'));
 
 
-app.listen(3000)
+app.listen(process.env.PORT || 80)
 
