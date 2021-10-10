@@ -101,6 +101,7 @@ function start() {
     app.use(express.static('public'));
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
+    app.disable('x-powered-by')
 
 
     // Requiring passport.js file
