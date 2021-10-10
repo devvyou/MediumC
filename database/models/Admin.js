@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'),
-    bcrypt = require('bcrypt'),
+    compare = require('bcrypt').compare,
 
     AdminSchema = new mongoose.Schema({
         email: {
@@ -25,7 +25,7 @@ const mongoose = require('mongoose'),
 
 AdminSchema.methods.validatePassword = async function (password) {
     try {
-        return await bcrypt.compare(password, this.password);
+        return await compare(password, this.password);
     } catch (error) {
         throw new Error(error);
     }

@@ -19,15 +19,20 @@ const addProductController = async (req, res) => {
 
     try {
 
-        const file = req.file;
+        const { name, description, price, shape, place, type, material } = req.body;
 
-        // Check the extension of every file
-        if (!extensions.includes(file.mimetype)) {
+        const findProduct = await Product.findOne({ name: name });
+
+        if (findProduct) {
             return res.redirect('/admin/dashboard');
         }
 
-        const { name, description, price, shape, place, type, material } = req.body;
+        const file = req.file;
 
+        // Check the extension of every file
+        if (!extensions.includes(req.file.mimetype)) {
+            return res.redirect('/admin/dashboard');
+        }
 
         // Tinify compress the image from its original path '/Products
         const src = tinify.fromFile(`./public/Products/${file.filename}`);
