@@ -32,11 +32,13 @@ function start() {
         { dnsPrefetchControl, noSniff, hsts, referrerPolicy, contentSecurityPolicy } = require('helmet'),
         expressLayouts = require('express-ejs-layouts'),
         expressSession = require('express-session'),
-        { create } = require('connect-mongo'),
+        MongoStore = require('connect-mongo'),
         hpp = require('hpp'),
         connDb = require('./database/connectDb'),
         passport = require('passport'),
-        compression = require('compression');
+        compression = require('compression'),
+        rateLimiter = require('express-rate-limit'),
+        MongoLimiterStore = require('rate-limit-mongo');
 
     // GZIP
     app.use(compression());
@@ -94,6 +96,7 @@ function start() {
     })
 
     // Other middlewares
+    app.disable('x-powered-by')
     app.use(hpp());
     app.use(nocache());
     app.set('view engine', 'ejs');
@@ -101,22 +104,23 @@ function start() {
     app.use(express.static('public'));
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
-    app.disable('x-powered-by')
+    app.set('trust proxy', 1)
 
 
     // Requiring passport.js file
     require('./passport');
 
+    const mongoStoreOptions = {
+        mongoUrl: process.env.MONGO_URI,
+        dbName: process.env.DB_NAME,
+    }
 
     // Init express-session
     app.use(expressSession({
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
-        store: create({
-            mongoUrl: process.env.MONGO_URI,
-            dbName: process.env.DB_NAME
-        })
+        store: new MongoStore(mongoStoreOptions)
     }))
 
 
@@ -124,6 +128,11 @@ function start() {
     app.use(passport.initialize());
     app.use(passport.session());
 
+    // Rate-limiter for ddos attacks
+    app.use(new rateLimiter({
+        max: 10,
+        windowMs: 10000,
+    }))
 
     // Local Variables
     app.use((req, res, next) => {
